@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Owl Carousel CSS link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .mein-container {
+      padding: 4rem 0;
+    }
+
+    /* Styling for the rotating div */
+    .main-container-hrotate {
+      display: flex;
+      justify-content: center;
+    }
+
+    .rotating-div {
+      width: 50px;
+      height: 50px;
+      background-color: rgb(72, 30, 167);
+      position: relative;
+      animation: rotate 4s steps(4, end) infinite, border-radius-change 3s linear infinite;
+    }
+
+    .icon {
+      position: relative;
+      top: 5px;
+      left: 28px;
+      z-index: 1;
+      color: white;
+      font-size: 2rem;
+    }
+
+    /* Animation for rotating the div with pauses */
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(90deg);
+      }
+
+      50% {
+        transform: rotate(180deg);
+      }
+
+      75% {
+        transform: rotate(270deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Animation for changing border-radius dynamically */
+    @keyframes border-radius-change {
+      0% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+
+      1% {
+        border-top-left-radius: 0;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+
+      20% {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+
+      30% {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 50%;
+      }
+
+      50% {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      60% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      70% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      80% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 0;
+      }
+
+      100% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .container {
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .backside-div {
+      position: absolute;
+      width: 90%;
+      height: 80%;
+      background-color: rgb(72, 30, 167);
+      border-radius: 20px;
+      top: 60px;
+      left: 30px;
+      z-index: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: rotate(-7deg);
+    }
+
+    .item {
+      position: relative;
+      width: 500px;
+      height: 360px;
+      background-color: rgb(255, 226, 225);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 35px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .card {
+      border: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      background-color: transparent;
+    }
+
+    .card-image-cover {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.281);
+      margin-bottom: 100px;
+    }
+
+    .card img {
+      max-width: 100px;
+      max-height: 100px;
+      border-radius: 50%;
+      height: auto;
+      transition: transform 6s ease-in-out;
+      animation: zoomInOut 6s ease-in-out infinite;
+    }
+
+    .card-body {
+      padding-left: 20px;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      color: rgb(72, 30, 167);
+      margin-top: 20px;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      color: black;
+      line-height: 30px;
+    }
+
+    .line {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .line-one {
+      width: 80px;
+      height: 4px;
+      border-radius: 2rem;
+      background-color: rgb(244, 77, 133);
+    }
+
+    .line-two {
+      width: 30px;
+      height: 4px;
+      border-radius: 2rem;
+      margin-left: 1rem;
+      background-color: rgb(72, 30, 167);
+    }
+
+    /* Keyframes for smooth zoom-in and zoom-out animation */
+    @keyframes zoomInOut {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .owl-carousel .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 450px;
+      background-color: transparent;
+    }
+
+    .owl-theme .owl-dots {
+      padding: 20px;
+    }
+
+    /* dots */
+    .owl-theme .owl-dots .owl-dot span {
+      background-color: black;
+    }
+
+    .owl-theme .owl-dots .owl-dot.active span {
+      background-color: rgb(72, 30, 167);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="mein-container">
+
+    <!-- Div element that will rotate infinitely -->
+    <div class="main-container-hrotate">
+      <div class="icon">i</div>
+      <div class="rotating-div"></div>
+    </div>
+
+    <div class="heading">
+      <h1>You Can See our clients feedback What You Say?</h1>
+    </div>
+
+    <!-- Owl Carousel start -->
+    <div class="owl-carousel owl-theme">
+      <div class="container">
+        <div class="backside-div"></div>
+        <!-- Card Component -->
+        <div class="item">
+          <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore voluptatum repellendus
+            quasi, natus pariatur labore voluptates recusandae! Molestias, unde quae incidunt temporibus quibusdam
+            debitis nemo, hic qui, fuga maiores atque sed! Earum magnam, nisi ipsum, eveniet!</p>
+          <div class="card">
+            <div class="card-image-cover">
+              <img src="./01(1).jpg" alt="Card Image">
+            </div>
+            <div class="card-body">
+              <div class="line">
+                <div class="line-one"></div>
+                <div class="line-two"></div>
+              </div>
+              <h5 class="card-title">Card Title 1</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Card Component 1 with Backside Div -->
+
+      <div class="container">
+        <div class="backside-div"></div>
+        <!-- Card Component -->
+        <div class="item">
+          <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore voluptatum repellendus
+            quasi, natus pariatur labore voluptates recusandae! Molestias, unde quae incidunt temporibus quibusdam
+            debitis nemo, hic qui, fuga maiores atque sed! Earum magnam, nisi ipsum, eveniet!</p>
+          <div class="card">
+            <div class="card-image-cover">
+              <img src="./01(1).jpg" alt="Card Image">
+            </div>
+            <div class="card-body">
+              <div class="line">
+                <div class="line-one"></div>
+                <div class="line-two"></div>
+              </div>
+              <h5 class="card-title">Card Title 2</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Card Component 2 with Backside Div -->
+
+      <div class="container">
+        <div class="backside-div"></div>
+        <!-- Card Component -->
+        <div class="item">
+          <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore voluptatum repellendus
+            quasi, natus pariatur labore voluptates recusandae! Molestias, unde quae incidunt temporibus quibusdam
+            debitis nemo, hic qui, fuga maiores atque sed! Earum magnam, nisi ipsum, eveniet!</p>
+          <div class="card">
+            <div class="card-image-cover">
+              <img src="./01(1).jpg" alt="Card Image">
+            </div>
+            <div class="card-body">
+              <div class="line">
+                <div class="line-one"></div>
+                <div class="line-two"></div>
+              </div>
+              <h5 class="card-title">Card Title 3</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Card Component 3 with Backside Div -->
+    </div>
+  </div>
+  <!-- Owl Carousel end -->
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Initialize Owl Carousel -->
+  <script>
+    $(document).ready(function () {
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          600: {
+            items: 2,
+            nav: false
+          },
+          1000: {
+            items: 2,
+            nav: false,
+            loop: true
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
